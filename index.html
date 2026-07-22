@@ -1,1 +1,441 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#08080c">
 
+<!-- ============================================================= -->
+<!--  SEO / превью при отправке ссылки (Instagram, Telegram, и т.д.) -->
+<!--  Замени текст и, при желании, добавь картинку превью og:image.  -->
+<!-- ============================================================= -->
+<title>ALEX — материалы, гайды и Telegram</title>
+<meta name="description" content="Короткий PDF-гайд, Telegram-канал, YouTube и мой бизнес — всё в одном месте.">
+<meta property="og:title" content="ALEX — материалы, гайды и Telegram">
+<meta property="og:description" content="Короткий PDF-гайд, Telegram-канал, YouTube и мой бизнес — всё в одном месте.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Unbounded:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ===================================================================
+   ДИЗАЙН-ТОКЕНЫ
+   =================================================================== */
+:root{
+  --bg:#08080c;
+  --bg-2:#0b0c12;
+  --text:#f5f5f7;
+  --muted:#9b9baa;
+  --muted-2:#6d6d7c;
+  --line:rgba(255,255,255,.09);
+  --line-strong:rgba(255,255,255,.16);
+  --glass:rgba(255,255,255,.035);
+  --glass-2:rgba(255,255,255,.06);
+
+  /* Фирменный градиент-акцент. Хочешь другой оттенок — меняй здесь. */
+  --a1:#b79bff;   /* фиолетовый  */
+  --a2:#6ea8ff;   /* синий       */
+  --a3:#57e6c8;   /* мятный      */
+  --grad:linear-gradient(120deg,var(--a1),var(--a2) 55%,var(--a3));
+  --grad-soft:linear-gradient(120deg,rgba(183,155,255,.16),rgba(110,168,255,.14) 55%,rgba(87,230,200,.12));
+
+  --radius:22px;
+  --radius-lg:28px;
+  --shadow:0 30px 80px -30px rgba(0,0,0,.75);
+  --maxw:560px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:"Manrope",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font-family:inherit}
+
+/* ===================================================================
+   ФОН: градиентные "орбы" + тонкая сетка + зерно
+   =================================================================== */
+.bg{position:fixed;inset:0;z-index:-2;overflow:hidden;background:
+  radial-gradient(120% 90% at 50% -10%, #12131b 0%, var(--bg) 60%);}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;will-change:transform}
+.orb.a{width:52vw;height:52vw;left:-14vw;top:-10vw;background:#6d4bff;animation:float1 22s var(--ease) infinite alternate}
+.orb.b{width:46vw;height:46vw;right:-16vw;top:12vh;background:#1f7bff;opacity:.42;animation:float2 26s var(--ease) infinite alternate}
+.orb.c{width:44vw;height:44vw;left:6vw;bottom:-18vh;background:#0fb69a;opacity:.32;animation:float3 30s var(--ease) infinite alternate}
+@keyframes float1{to{transform:translate(6vw,5vh) scale(1.1)}}
+@keyframes float2{to{transform:translate(-5vw,7vh) scale(1.08)}}
+@keyframes float3{to{transform:translate(4vw,-6vh) scale(1.12)}}
+
+.grid-overlay{position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(90% 60% at 50% 30%,#000 0%,transparent 75%);
+  mask-image:radial-gradient(90% 60% at 50% 30%,#000 0%,transparent 75%);}
+.grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+/* ===================================================================
+   ЛЭЙАУТ
+   =================================================================== */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px;
+  padding-top:max(28px,env(safe-area-inset-top));
+  padding-bottom:max(48px,env(safe-area-inset-bottom));}
+
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:6px 2px 34px}
+.mono{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.02em}
+.mono .dot{width:30px;height:30px;border-radius:9px;background:var(--grad);
+  display:grid;place-items:center;font-family:"Unbounded";font-size:14px;color:#0a0a12;font-weight:600}
+.status{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--muted);
+  border:1px solid var(--line);padding:6px 11px;border-radius:999px;background:var(--glass);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.status .live{width:7px;height:7px;border-radius:50%;background:var(--a3);
+  box-shadow:0 0 0 0 rgba(87,230,200,.55);animation:pulse 2.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(87,230,200,.5)}70%{box-shadow:0 0 0 8px rgba(87,230,200,0)}100%{box-shadow:0 0 0 0 rgba(87,230,200,0)}}
+
+/* ===================================================================
+   HERO
+   =================================================================== */
+.hero{text-align:center;padding:8px 0 6px}
+.avatar-ring{width:118px;height:118px;margin:0 auto 22px;border-radius:50%;
+  padding:2.5px;background:conic-gradient(from 200deg,var(--a1),var(--a2),var(--a3),var(--a1));
+  box-shadow:0 20px 50px -18px rgba(110,120,255,.6);position:relative}
+.avatar-ring::after{content:"";position:absolute;inset:-9px;border-radius:50%;border:1px solid var(--line)}
+.avatar{width:100%;height:100%;border-radius:50%;object-fit:cover;
+  background:linear-gradient(160deg,#1a1b26,#101018);display:grid;place-items:center;
+  font-family:"Unbounded";font-weight:500;font-size:34px;color:#cdd0ff;letter-spacing:.04em}
+
+.name{font-family:"Unbounded";font-weight:400;font-size:clamp(30px,8.5vw,42px);
+  line-height:1.05;margin:0 0 12px;letter-spacing:.01em}
+.role{color:var(--muted);font-size:15.5px;max-width:400px;margin:0 auto 20px;font-weight:400}
+.role b{color:var(--text);font-weight:600}
+
+.trust{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:6px}
+.chip{font-size:12.5px;color:var(--muted);border:1px solid var(--line);
+  padding:6px 12px;border-radius:999px;background:var(--glass);display:inline-flex;gap:6px;align-items:center}
+.chip svg{width:13px;height:13px;opacity:.8}
+
+/* ===================================================================
+   СЕКЦИИ / КАРТОЧКИ
+   =================================================================== */
+.section{margin-top:34px}
+.eyebrow{display:flex;align-items:center;gap:10px;color:var(--muted-2);
+  font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;margin:0 4px 14px}
+.eyebrow::after{content:"";flex:1;height:1px;background:var(--line)}
+
+.card{position:relative;border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--glass);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);
+  padding:22px;overflow:hidden;transition:transform .5s var(--ease),border-color .4s,box-shadow .5s}
+.card::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;
+  background:linear-gradient(140deg,rgba(255,255,255,.22),transparent 40%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;opacity:.7}
+
+.offer{padding:24px}
+.offer .glowline{position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--a2),transparent);opacity:.7}
+.offer-top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:16px}
+.badge-hot{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:#0a0a12;background:var(--grad);padding:5px 10px;border-radius:8px}
+.offer h3{font-family:"Unbounded";font-weight:400;font-size:22px;line-height:1.2;margin:0 0 6px}
+.offer p{color:var(--muted);font-size:14.5px;margin:0 0 18px}
+.offer ul{list-style:none;padding:0;margin:0 0 20px;display:grid;gap:9px}
+.offer li{display:flex;gap:11px;align-items:flex-start;font-size:14px;color:#d7d7e0}
+.offer li svg{width:18px;height:18px;flex:none;margin-top:1px;color:var(--a3)}
+.price-row{display:flex;align-items:baseline;gap:10px;margin-bottom:18px}
+.price{font-family:"Unbounded";font-size:26px}
+.price-old{color:var(--muted-2);text-decoration:line-through;font-size:15px}
+.price-note{color:var(--muted);font-size:13px;margin-left:auto}
+
+/* ===================================================================
+   КНОПКИ
+   =================================================================== */
+.btn{position:relative;display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;padding:16px 20px;border-radius:15px;border:1px solid var(--line-strong);
+  background:var(--glass-2);color:var(--text);font-size:15.5px;font-weight:600;cursor:pointer;
+  transition:transform .3s var(--ease),background .3s,border-color .3s;overflow:hidden}
+.btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.09)}
+.btn:active{transform:translateY(0)}
+.btn svg{width:19px;height:19px;flex:none}
+.btn .arr{margin-left:auto;transition:transform .3s var(--ease)}
+.btn:hover .arr{transform:translate(4px)}
+
+.btn-primary{border:none;color:#0a0a12;background:var(--grad);font-weight:700}
+.btn-primary::after{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);
+  transform:skewX(-20deg);animation:shine 4.5s ease-in-out infinite}
+@keyframes shine{0%,60%{left:-120%}80%,100%{left:130%}}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 40px -14px rgba(120,140,255,.6)}
+
+/* список ссылок */
+.links{display:grid;gap:12px}
+.link-item{display:flex;align-items:center;gap:15px;padding:16px 18px;border-radius:16px;
+  border:1px solid var(--line);background:var(--glass);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  transition:transform .3s var(--ease),border-color .3s,background .3s}
+.link-item:hover{transform:translateY(-2px);border-color:var(--line-strong);background:var(--glass-2)}
+.link-ic{width:44px;height:44px;border-radius:12px;flex:none;display:grid;place-items:center;
+  border:1px solid var(--line);background:rgba(255,255,255,.04)}
+.link-ic svg{width:22px;height:22px}
+.link-tx{flex:1;min-width:0}
+.link-tx .t{font-weight:600;font-size:15px}
+.link-tx .s{color:var(--muted);font-size:13px}
+.link-item .arr{width:20px;height:20px;flex:none;color:var(--muted);transition:transform .3s var(--ease)}
+.link-item:hover .arr{transform:translate(4px);color:var(--text)}
+
+/* карточка бизнеса — акцентная */
+.biz{position:relative;display:block;padding:24px;border-radius:var(--radius);overflow:hidden;
+  border:1px solid transparent;background:
+    linear-gradient(var(--bg-2),var(--bg-2)) padding-box,
+    var(--grad) border-box;
+  transition:transform .4s var(--ease),box-shadow .4s}
+.biz:hover{transform:translateY(-3px);box-shadow:0 26px 60px -24px rgba(120,140,255,.5)}
+.biz .aura{position:absolute;inset:0;background:var(--grad-soft);opacity:.9;z-index:0}
+.biz-inner{position:relative;z-index:1}
+.biz .kicker{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--a1);margin-bottom:10px}
+.biz h3{font-family:"Unbounded";font-weight:400;font-size:23px;margin:0 0 8px;line-height:1.2}
+.biz p{color:var(--muted);font-size:14.5px;margin:0 0 18px}
+.biz .go{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:15px}
+.biz .go svg{width:18px;height:18px;transition:transform .3s var(--ease)}
+.biz:hover .go svg{transform:translate(4px)}
+
+/* соцсети-футер */
+.socials{display:flex;justify-content:center;gap:12px;margin-top:34px}
+.soc{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;
+  border:1px solid var(--line);background:var(--glass);color:var(--muted);
+  transition:transform .3s var(--ease),color .3s,border-color .3s,background .3s}
+.soc:hover{transform:translateY(-3px);color:var(--text);border-color:var(--line-strong);background:var(--glass-2)}
+.soc svg{width:21px;height:21px}
+
+.foot{text-align:center;color:var(--muted-2);font-size:12.5px;margin-top:30px;line-height:1.7}
+.foot a{color:var(--muted)}
+
+/* ===================================================================
+   ПОЯВЛЕНИЕ ПРИ СКРОЛЛЕ
+   =================================================================== */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+}
+@media (max-width:400px){
+  .wrap{padding-left:16px;padding-right:16px}
+  .card,.offer,.biz{padding:20px}
+}
+</style>
+</head>
+<body>
+
+<div class="bg" aria-hidden="true">
+  <div class="orb a"></div><div class="orb b"></div><div class="orb c"></div>
+</div>
+<div class="grid-overlay" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<main class="wrap">
+
+  <!-- ── ВЕРХНЯЯ ПАНЕЛЬ ─────────────────────────────────────────── -->
+  <div class="topbar reveal">
+    <div class="mono"><span class="dot" id="mono-letter">A</span><span id="mono-name">ALEX</span></div>
+    <span class="status"><span class="live"></span>На связи</span>
+  </div>
+
+  <!-- ── HERO ───────────────────────────────────────────────────── -->
+  <header class="hero">
+    <div class="avatar-ring reveal">
+      <div class="avatar" id="avatar">AX</div>
+    </div>
+    <h1 class="name reveal" id="hero-name">ALEX</h1>
+    <p class="role reveal" id="hero-role">Помогаю преодолеть страх камеры и начать <b>снимать видео уверенно</b>. Гайды, канал и мой бизнес — ниже.</p>
+    <div class="trust reveal">
+      <span class="chip"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.7L12 17.3 5.8 20.8l1.6-6.7L2.2 8.9l6.9-.6z"/></svg><span id="chip-1">Автор гайдов</span></span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span id="chip-2">Проверено на практике</span></span>
+    </div>
+  </header>
+
+  <!-- ── ФЛАГМАН: PDF-ГАЙД ──────────────────────────────────────── -->
+  <section class="section reveal">
+    <div class="eyebrow">Материал</div>
+    <div class="card offer">
+      <span class="glowline"></span>
+      <div class="offer-top">
+        <span class="badge-hot" id="offer-badge">PDF-гайд</span>
+        <span class="price-note" id="offer-format">PDF · читается за 15 минут</span>
+      </div>
+      <h3 id="offer-title">7 самых частых привычек, которые мешают начать снимать видео</h3>
+      <p id="offer-desc">Короткий разбор без воды: узнаёшь, что тебя тормозит, ломаешь барьер и записываешь первое видео уже сегодня.</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span>7 привычек, которые крадут твою уверенность на камеру</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span>Простые действия, чтобы снять первое видео без ступора</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg><span>Формат «прочитал → сделал»: без теории ради теории</span></li>
+      </ul>
+      <div class="price-row">
+        <span class="price" id="offer-price">490 ₽</span>
+        <span class="price-old" id="offer-price-old">990 ₽</span>
+        <span class="price-note" id="offer-price-note">мгновенная выдача</span>
+      </div>
+      <a class="btn btn-primary" id="cta-guide" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l4-4m-4 4l-4-4M5 21h14"/></svg>
+        <span id="cta-guide-text">Получить гайд</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── ССЫЛКИ: КАНАЛ / YOUTUBE ────────────────────────────────── -->
+  <section class="section reveal">
+    <div class="eyebrow">Где я публикуюсь</div>
+    <div class="links">
+
+      <a class="link-item" id="link-tg" href="#" target="_blank" rel="noopener">
+        <span class="link-ic"><svg viewBox="0 0 24 24" fill="#29a9eb"><path d="M21.9 4.3l-3.3 15.6c-.25 1.1-.9 1.37-1.83.86l-5.05-3.72-2.44 2.35c-.27.27-.5.5-1.02.5l.36-5.14L18.1 6.4c.4-.36-.09-.56-.63-.2L7.28 12.6l-4.98-1.56c-1.08-.34-1.1-1.08.23-1.6l19.46-7.5c.9-.33 1.7.22 1.4 1.36z"/></svg></span>
+        <span class="link-tx"><div class="t">Telegram-канал</div><div class="s">Регулярные посты и разборы</div></span>
+        <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+      </a>
+
+      <a class="link-item" id="link-yt" href="#" target="_blank" rel="noopener">
+        <span class="link-ic"><svg viewBox="0 0 24 24" fill="#ff3d3d"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 00-1.76-1.77C19.25 5.1 12 5.1 12 5.1s-7.25 0-8.84.43A2.5 2.5 0 001.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 001.76 1.77c1.59.43 8.84.43 8.84.43s7.25 0 8.84-.43a2.5 2.5 0 001.76-1.77C23 15.2 23 12 23 12zM9.75 15.5v-7l6 3.5z"/></svg></span>
+        <span class="link-tx"><div class="t">YouTube-канал</div><div class="s">Видео и полезные ролики</div></span>
+        <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ── БИЗНЕС ─────────────────────────────────────────────────── -->
+  <section class="section reveal">
+    <div class="eyebrow">Возможность</div>
+    <a class="biz" id="cta-biz" href="business.html">
+      <div class="aura" aria-hidden="true"></div>
+      <div class="biz-inner">
+        <div class="kicker" id="biz-kicker">Для тех, кто хочет большего</div>
+        <h3 id="biz-title">Узнать о моём бизнесе</h3>
+        <p id="biz-desc">Короткое видео о том, чем я занимаюсь и как ты можешь присоединиться. Без обязательств — просто посмотри.</p>
+        <span class="go"><span id="biz-cta">Смотреть подробнее</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14m-6-6l6 6-6 6"/></svg>
+        </span>
+      </div>
+    </a>
+  </section>
+
+  <!-- ── СОЦСЕТИ ────────────────────────────────────────────────── -->
+  <nav class="socials reveal" aria-label="Соцсети">
+    <a class="soc" id="soc-tg" href="#" target="_blank" rel="noopener" aria-label="Telegram">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3l-3.3 15.6c-.25 1.1-.9 1.37-1.83.86l-5.05-3.72-2.44 2.35c-.27.27-.5.5-1.02.5l.36-5.14L18.1 6.4c.4-.36-.09-.56-.63-.2L7.28 12.6l-4.98-1.56c-1.08-.34-1.1-1.08.23-1.6l19.46-7.5c.9-.33 1.7.22 1.4 1.36z"/></svg></a>
+    <a class="soc" id="soc-ig" href="#" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a>
+    <a class="soc" id="soc-th" href="#" target="_blank" rel="noopener" aria-label="Threads">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 11.4c-.1-.05-.2-.1-.3-.14-.18-3.2-1.96-5.05-4.9-5.07-1.78-.01-3.28.75-4.2 2.16l1.64 1.12c.68-1.02 1.73-1.24 2.55-1.24 1.42.01 2.4.83 2.6 2.28-.6-.1-1.24-.13-1.92-.09-2.7.16-4.44 1.73-4.32 3.92.06 1.11.62 2.06 1.56 2.67.8.51 1.82.76 2.9.7 1.42-.08 2.53-.62 3.31-1.6.59-.75.97-1.7 1.13-2.9.66.4 1.15.93 1.42 1.57.46 1.08.49 2.86-.96 4.3-1.27 1.27-2.8 1.82-5.11 1.84-2.56-.02-4.5-.84-5.75-2.44C4.3 17.3 3.7 15.2 3.68 12.5c.02-2.7.62-4.8 1.77-6.24C6.7 4.66 8.64 3.84 11.2 3.82c2.58.02 4.53.84 5.8 2.45.62.8 1.09 1.8 1.4 3l1.9-.5c-.37-1.47-.97-2.74-1.78-3.78C18.83 2.9 16.36 1.85 13.2 1.83h-.01c-3.15.02-5.6 1.08-7.28 3.15C4.4 6.83 3.7 9.3 3.68 12.49v.02c.02 3.19.72 5.66 2.23 7.51 1.68 2.07 4.13 3.13 7.28 3.15h.01c2.8-.02 4.77-.75 6.4-2.38 2.13-2.13 2.07-4.8 1.37-6.44-.5-1.18-1.46-2.14-2.77-2.77z"/></svg></a>
+    <a class="soc" id="soc-yt" href="#" target="_blank" rel="noopener" aria-label="YouTube">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 00-1.76-1.77C19.25 5.1 12 5.1 12 5.1s-7.25 0-8.84.43A2.5 2.5 0 001.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 001.76 1.77c1.59.43 8.84.43 8.84.43s7.25 0 8.84-.43a2.5 2.5 0 001.76-1.77C23 15.2 23 12 23 12zM9.75 15.5v-7l6 3.5z"/></svg></a>
+  </nav>
+
+  <div class="foot reveal">
+    <div id="foot-name">© 2026 ALEX</div>
+    <div>Сделано с вниманием к деталям</div>
+  </div>
+
+</main>
+
+<!-- ===================================================================
+     ⚙️  НАСТРОЙКА САЙТА — РЕДАКТИРУЙ ТОЛЬКО ЭТОТ БЛОК
+     ===================================================================
+     Вставь свои ссылки и тексты между кавычками. Ссылки должны
+     начинаться с https://  (например https://t.me/your_channel).
+     Всё остальное трогать не нужно.
+=================================================================== -->
+<script>
+const CONFIG = {
+
+  /* ── Имя / бренд ─────────────────────────────────── */
+  name:     "ALEX",              // отображаемое имя
+  monogram: "A",                 // 1 буква в логотипе слева вверху
+  photo:    "",                  // ссылка на фото (например "avatar.jpg"). Пусто = инициалы
+  initials: "AX",                // инициалы, если фото нет
+  role:     "Помогаю преодолеть страх камеры и начать <b>снимать видео уверенно</b>. Гайды, канал и мой бизнес — ниже.",
+
+  /* ── PDF-гайд ────────────────────────────────────── */
+  guide: {
+    title:      "7 самых частых привычек, которые мешают начать снимать видео",
+    desc:       "Короткий разбор без воды: узнаёшь, что тебя тормозит, ломаешь барьер и записываешь первое видео уже сегодня.",
+    price:      "490 ₽",
+    priceOld:   "990 ₽",         // пусто "" — если скидки нет
+    buttonText: "Получить гайд",
+    payLink:    "https://"       // 👉 ССЫЛКА НА ОПЛАТУ / ВЫДАЧУ ГАЙДА
+  },
+
+  /* ── Ссылки ──────────────────────────────────────── */
+  telegramChannel: "https://",      // 👉 Telegram-КАНАЛ
+  youtube:         "https://",      // 👉 YouTube-канал
+  businessLink:    "business.html", // страница о бизнесе (оставь как есть — это второй файл)
+
+  /* ── Соцсети в футере (пусто "" = иконка скрыта) ──── */
+  personalTelegram: "https://",  // 👉 личный Telegram (кнопка в футере)
+  instagram:        "https://",  // 👉 Instagram
+  threads:          "https://"   // 👉 Threads
+};
+
+/* ---- применение конфига (менять не нужно) ------------------------ */
+(function(){
+  const $ = id => document.getElementById(id);
+  const setText = (id,v)=>{ const e=$(id); if(e&&v!=null) e.innerHTML=v; };
+  const setHref = (id,v)=>{ const e=$(id); if(!e) return;
+    if(v===""){ e.style.display="none"; return; }        // пусто "" → элемент скрыт
+    if(v && v!=="https://"){ e.href=v; }                 // "https://" → остаётся как заглушка (виден)
+  };
+
+  setText("mono-name",CONFIG.name); setText("hero-name",CONFIG.name);
+  setText("mono-letter",CONFIG.monogram);
+  setText("hero-role",CONFIG.role);
+  document.title = CONFIG.name + " — материалы, гайды и Telegram";
+
+  const av=$("avatar");
+  if(CONFIG.photo){ av.textContent=""; av.style.backgroundImage="url('"+CONFIG.photo+"')";
+    av.style.backgroundSize="cover"; av.style.backgroundPosition="center"; }
+  else { av.textContent = CONFIG.initials; }
+
+  setText("offer-title",CONFIG.guide.title);
+  setText("offer-desc",CONFIG.guide.desc);
+  setText("offer-price",CONFIG.guide.price);
+  setText("cta-guide-text",CONFIG.guide.buttonText);
+  if(CONFIG.guide.priceOld){ setText("offer-price-old",CONFIG.guide.priceOld); }
+  else { const o=$("offer-price-old"); if(o) o.style.display="none"; }
+  const pay=$("cta-guide"); if(CONFIG.guide.payLink && CONFIG.guide.payLink!=="https://") pay.href=CONFIG.guide.payLink;
+
+  setHref("link-tg",CONFIG.telegramChannel);
+  setHref("link-yt",CONFIG.youtube);
+  const biz=$("cta-biz"); if(CONFIG.businessLink) biz.href=CONFIG.businessLink;
+
+  setHref("soc-tg",CONFIG.personalTelegram);
+  setHref("soc-ig",CONFIG.instagram);
+  setHref("soc-th",CONFIG.threads);
+  setHref("soc-yt",CONFIG.youtube);
+
+  const yr=new Date().getFullYear();
+  setText("foot-name","© "+yr+" "+CONFIG.name);
+
+  /* появление при скролле */
+  const items=document.querySelectorAll(".reveal");
+  const io=new IntersectionObserver((es)=>{es.forEach((e,i)=>{
+    if(e.isIntersecting){ setTimeout(()=>e.target.classList.add("in"), i*70); io.unobserve(e.target);} })
+  },{threshold:.12});
+  items.forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>

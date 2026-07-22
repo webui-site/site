@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#08080c">
+<title>Мой бизнес — ALEX</title>
+<meta name="description" content="Короткое видео о том, чем я занимаюсь и как ты можешь присоединиться.">
+<meta property="og:title" content="Мой бизнес — ALEX">
+<meta property="og:description" content="Посмотри короткое видео и напиши мне лично.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Unbounded:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#08080c;--bg-2:#0b0c12;--text:#f5f5f7;--muted:#9b9baa;--muted-2:#6d6d7c;
+  --line:rgba(255,255,255,.09);--line-strong:rgba(255,255,255,.16);
+  --glass:rgba(255,255,255,.035);--glass-2:rgba(255,255,255,.06);
+  --a1:#b79bff;--a2:#6ea8ff;--a3:#57e6c8;
+  --grad:linear-gradient(120deg,var(--a1),var(--a2) 55%,var(--a3));
+  --radius:22px;--maxw:640px;--ease:cubic-bezier(.22,.61,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;font-family:"Manrope",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  color:var(--text);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+.bg{position:fixed;inset:0;z-index:-2;overflow:hidden;
+  background:radial-gradient(120% 90% at 50% -10%,#12131b 0%,var(--bg) 60%)}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.45;will-change:transform}
+.orb.a{width:52vw;height:52vw;left:-14vw;top:-12vw;background:#6d4bff;animation:f1 24s var(--ease) infinite alternate}
+.orb.b{width:46vw;height:46vw;right:-16vw;top:20vh;background:#1f7bff;opacity:.4;animation:f2 28s var(--ease) infinite alternate}
+@keyframes f1{to{transform:translate(6vw,5vh) scale(1.1)}}
+@keyframes f2{to{transform:translate(-5vw,7vh) scale(1.08)}}
+.grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px;
+  padding-top:max(20px,env(safe-area-inset-top));
+  padding-bottom:max(56px,env(safe-area-inset-bottom))}
+
+.back{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:14px;
+  padding:20px 0 8px;transition:color .3s}
+.back:hover{color:var(--text)}
+.back svg{width:17px;height:17px}
+
+.hero{text-align:center;padding:34px 0 8px}
+.kick{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--a1);
+  border:1px solid var(--line);padding:7px 14px;border-radius:999px;background:var(--glass);margin-bottom:20px}
+.kick .live{width:7px;height:7px;border-radius:50%;background:var(--a3)}
+h1{font-family:"Unbounded";font-weight:400;font-size:clamp(28px,7.5vw,44px);line-height:1.08;
+  margin:0 0 16px;letter-spacing:.01em}
+h1 .em{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--muted);font-size:16px;max-width:480px;margin:0 auto 8px}
+
+/* видео */
+.video-wrap{margin:36px 0 8px;position:relative;border-radius:var(--radius);overflow:hidden;
+  border:1px solid var(--line-strong);box-shadow:0 40px 90px -40px rgba(0,0,0,.9);
+  background:#000;aspect-ratio:16/9}
+.video-wrap iframe,.video-wrap video{position:absolute;inset:0;width:100%;height:100%;border:0}
+/* заглушка, когда видео ещё не вставлено */
+.video-placeholder{position:absolute;inset:0;display:grid;place-items:center;text-align:center;
+  background:linear-gradient(150deg,#14141d,#0c0c12);cursor:pointer}
+.video-placeholder .play{width:76px;height:76px;border-radius:50%;background:var(--grad);
+  display:grid;place-items:center;margin:0 auto 16px;box-shadow:0 18px 45px -14px rgba(120,140,255,.7);
+  transition:transform .3s var(--ease)}
+.video-placeholder:hover .play{transform:scale(1.06)}
+.video-placeholder .play svg{width:30px;height:30px;color:#0a0a12;margin-left:4px}
+.video-placeholder .cap{color:var(--muted);font-size:13.5px;max-width:280px;margin:0 auto}
+.video-placeholder .cap b{color:var(--text);display:block;font-size:15px;margin-bottom:4px}
+
+/* блоки ценности */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:40px}
+@media (max-width:480px){.grid{grid-template-columns:1fr}}
+.tile{border:1px solid var(--line);border-radius:18px;padding:20px;background:var(--glass);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.tile .ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;margin-bottom:14px;
+  background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--a2)}
+.tile .ic svg{width:21px;height:21px}
+.tile h3{font-size:16px;margin:0 0 6px;font-weight:700}
+.tile p{color:var(--muted);font-size:14px;margin:0}
+
+/* шаги */
+.steps{margin-top:40px;display:grid;gap:12px}
+.step{display:flex;gap:16px;align-items:flex-start;border:1px solid var(--line);border-radius:16px;
+  padding:18px;background:var(--glass)}
+.step .n{font-family:"Unbounded";font-size:18px;width:40px;height:40px;flex:none;border-radius:12px;
+  display:grid;place-items:center;background:var(--grad);color:#0a0a12}
+.step h4{margin:0 0 3px;font-size:15.5px}
+.step p{margin:0;color:var(--muted);font-size:14px}
+
+/* финальный CTA */
+.cta-card{margin-top:44px;text-align:center;border-radius:var(--radius);padding:36px 26px;
+  position:relative;overflow:hidden;border:1px solid transparent;
+  background:linear-gradient(var(--bg-2),var(--bg-2)) padding-box,var(--grad) border-box}
+.cta-card .aura{position:absolute;inset:0;
+  background:linear-gradient(120deg,rgba(183,155,255,.16),rgba(87,230,200,.12));opacity:.9}
+.cta-card .in{position:relative;z-index:1}
+.cta-card h2{font-family:"Unbounded";font-weight:400;font-size:26px;margin:0 0 10px}
+.cta-card p{color:var(--muted);font-size:15px;max-width:400px;margin:0 auto 24px}
+
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:11px;
+  padding:17px 30px;border-radius:15px;border:none;color:#0a0a12;background:var(--grad);
+  font-size:16px;font-weight:700;cursor:pointer;overflow:hidden;
+  transition:transform .3s var(--ease),box-shadow .3s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 20px 45px -16px rgba(120,140,255,.65)}
+.btn svg{width:20px;height:20px}
+.btn::after{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);
+  transform:skewX(-20deg);animation:shine 4.5s ease-in-out infinite}
+@keyframes shine{0%,60%{left:-120%}80%,100%{left:130%}}
+.note{color:var(--muted-2);font-size:12.5px;margin-top:16px}
+
+.foot{text-align:center;color:var(--muted-2);font-size:12.5px;margin-top:40px;line-height:1.7}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div class="bg" aria-hidden="true"><div class="orb a"></div><div class="orb b"></div></div>
+<div class="grain" aria-hidden="true"></div>
+
+<main class="wrap">
+
+  <a class="back" href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    Назад
+  </a>
+
+  <header class="hero">
+    <div class="kick reveal"><span class="live"></span><span id="kicker">Открыто для новых людей</span></div>
+    <h1 class="reveal" id="title">Чем я занимаюсь и <span class="em">как это может изменить твою жизнь</span></h1>
+    <p class="sub reveal" id="subtitle">Посмотри короткое видео ниже — за пару минут расскажу суть. Если откликнется, напиши мне лично, и обсудим.</p>
+  </header>
+
+  <!-- ── ВИДЕО ──────────────────────────────────────────────────── -->
+  <div class="video-wrap reveal" id="video-wrap">
+    <!-- Когда вставишь ссылку videoEmbed в конфиге — сюда встанет плеер. -->
+    <div class="video-placeholder" id="video-placeholder">
+      <div>
+        <div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+        <div class="cap"><b>Продающее видео</b>Вставь ссылку на YouTube/Vimeo в конфиге — плеер появится здесь автоматически.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ЧТО ТЫ ПОЛУЧАЕШЬ ───────────────────────────────────────── -->
+  <section class="grid">
+    <div class="tile reveal">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></div>
+      <h3 id="t1-h">Понятная модель</h3>
+      <p id="t1-p">Никакой воды — покажу, как всё устроено и с чего начать.</p>
+    </div>
+    <div class="tile reveal">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zm14 10v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+      <h3 id="t2-h">Поддержка и команда</h3>
+      <p id="t2-p">Ты не один: рядом люди, которые уже проходят этот путь.</p>
+    </div>
+    <div class="tile reveal">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M7 14l4-4 3 3 5-6"/></svg></div>
+      <h3 id="t3-h">Рост в своём темпе</h3>
+      <p id="t3-p">Совмещаешь с текущими делами и двигаешься так, как удобно тебе.</p>
+    </div>
+    <div class="tile reveal">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 0v20m10-10H2"/></svg></div>
+      <h3 id="t4-h">Без обязательств</h3>
+      <p id="t4-p">Сначала смотришь и задаёшь вопросы. Решение — только за тобой.</p>
+    </div>
+  </section>
+
+  <!-- ── КАК НАЧАТЬ ─────────────────────────────────────────────── -->
+  <section class="steps">
+    <div class="step reveal"><div class="n">1</div><div><h4 id="s1-h">Посмотри видео</h4><p id="s1-p">Короткий ролик выше объяснит суть без лишних слов.</p></div></div>
+    <div class="step reveal"><div class="n">2</div><div><h4 id="s2-h">Напиши мне лично</h4><p id="s2-p">Задай любой вопрос в Telegram — отвечаю сам.</p></div></div>
+    <div class="step reveal"><div class="n">3</div><div><h4 id="s3-h">Начни, если откликнется</h4><p id="s3-p">Двигаемся дальше только если тебе действительно интересно.</p></div></div>
+  </section>
+
+  <!-- ── ФИНАЛЬНЫЙ CTA ──────────────────────────────────────────── -->
+  <section class="cta-card reveal">
+    <div class="aura" aria-hidden="true"></div>
+    <div class="in">
+      <h2 id="cta-h">Есть вопрос? Напиши мне</h2>
+      <p id="cta-p">Отвечу лично и без давления. Просто расскажи, что тебя зацепило.</p>
+      <a class="btn" id="cta-tg" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3l-3.3 15.6c-.25 1.1-.9 1.37-1.83.86l-5.05-3.72-2.44 2.35c-.27.27-.5.5-1.02.5l.36-5.14L18.1 6.4c.4-.36-.09-.56-.63-.2L7.28 12.6l-4.98-1.56c-1.08-.34-1.1-1.08.23-1.6l19.46-7.5c.9-.33 1.7.22 1.4 1.36z"/></svg>
+        <span id="cta-tg-text">Написать в Telegram</span>
+      </a>
+      <div class="note" id="cta-note">Обычно отвечаю в течение дня</div>
+    </div>
+  </section>
+
+  <div class="foot reveal" id="foot">© 2026 ALEX</div>
+
+</main>
+
+<!-- ===================================================================
+     ⚙️  НАСТРОЙКА СТРАНИЦЫ О БИЗНЕСЕ — РЕДАКТИРУЙ ТОЛЬКО ЭТОТ БЛОК
+     ===================================================================
+     Главное — вставь videoEmbed (ссылку на видео) и personalTelegram.
+=================================================================== -->
+<script>
+const CONFIG = {
+  name: "ALEX",
+
+  /* Продающее видео.
+     Вставь ССЫЛКУ ДЛЯ ВСТРАИВАНИЯ (embed), например:
+       YouTube:  "https://www.youtube.com/embed/XXXXXXXX"
+       Vimeo:    "https://player.vimeo.com/video/XXXXXXXX"
+     Как взять embed-ссылку YouTube: открой видео → «Поделиться» →
+     «Встроить» → скопируй адрес из src="...". Пусто = останется заглушка. */
+  videoEmbed: "",
+
+  /* 👉 Твой ЛИЧНЫЙ Telegram (главная кнопка на этой странице) */
+  personalTelegram: "https://",
+
+  /* Тексты (можно оставить как есть) */
+  kicker:   "Открыто для новых людей",
+  title:    "Чем я занимаюсь и <span class='em'>как это может изменить твою жизнь</span>",
+  subtitle: "Посмотри короткое видео ниже — за пару минут расскажу суть. Если откликнется, напиши мне лично, и обсудим.",
+  ctaHeading: "Есть вопрос? Напиши мне",
+  ctaText:    "Отвечу лично и без давления. Просто расскажи, что тебя зацепило.",
+  ctaButton:  "Написать в Telegram",
+  ctaNote:    "Обычно отвечаю в течение дня"
+};
+
+/* ---- применение (менять не нужно) -------------------------------- */
+(function(){
+  const $=id=>document.getElementById(id);
+  const set=(id,v)=>{const e=$(id);if(e&&v!=null)e.innerHTML=v};
+
+  set("kicker",CONFIG.kicker);
+  set("title",CONFIG.title);
+  set("subtitle",CONFIG.subtitle);
+  set("cta-h",CONFIG.ctaHeading);
+  set("cta-p",CONFIG.ctaText);
+  set("cta-tg-text",CONFIG.ctaButton);
+  set("cta-note",CONFIG.ctaNote);
+  document.title="Мой бизнес — "+CONFIG.name;
+  set("foot","© "+new Date().getFullYear()+" "+CONFIG.name);
+
+  if(CONFIG.personalTelegram && CONFIG.personalTelegram!=="https://"){
+    $("cta-tg").href=CONFIG.personalTelegram;
+  }
+
+  /* вставка видео */
+  if(CONFIG.videoEmbed){
+    const w=$("video-wrap");
+    w.innerHTML='<iframe src="'+CONFIG.videoEmbed+'" title="Видео" '+
+      'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" '+
+      'allowfullscreen loading="lazy"></iframe>';
+  }
+
+  const io=new IntersectionObserver((es)=>{es.forEach((e,i)=>{
+    if(e.isIntersecting){setTimeout(()=>e.target.classList.add("in"),i*60);io.unobserve(e.target);}})
+  },{threshold:.12});
+  document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>
