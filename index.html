@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#08080c">
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="%230b0c12"/><text x="32" y="44" font-family="Arial" font-size="34" font-weight="bold" text-anchor="middle" fill="%236b7cff">D</text></svg>'>
 
 <!-- ============================================================= -->
 <!--  SEO / превью при отправке ссылки (Instagram, Telegram, и т.д.) -->
@@ -34,11 +35,6 @@
   --line-strong:rgba(255,255,255,.16);
   --glass:rgba(255,255,255,.035);
   --glass-2:rgba(255,255,255,.06);
-
-  /* Второстепенные оттенки — только для фона и кольца аватара */
-  --a1:#b79bff;
-  --a2:#6ea8ff;
-  --a3:#57e6c8;
 
   /* ОСНОВНОЙ цвет кнопок и акцентов. Нужен другой — поменяй только здесь. */
   --accent:#6b7cff;
@@ -75,9 +71,10 @@ button{font-family:inherit}
 .bg{position:fixed;inset:0;z-index:-2;overflow:hidden;background:
   radial-gradient(120% 90% at 50% -10%, #12131b 0%, var(--bg) 60%);}
 .orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;will-change:transform}
-.orb.a{width:52vw;height:52vw;left:-14vw;top:-10vw;background:#6d4bff;animation:float1 22s var(--ease) infinite alternate}
-.orb.b{width:46vw;height:46vw;right:-16vw;top:12vh;background:#1f7bff;opacity:.42;animation:float2 26s var(--ease) infinite alternate}
-.orb.c{width:44vw;height:44vw;left:6vw;bottom:-18vh;background:#0fb69a;opacity:.32;animation:float3 30s var(--ease) infinite alternate}
+.orb.a{width:52vw;height:52vw;left:-14vw;top:-10vw;background:#6d4bff;opacity:.6;animation:float1 22s var(--ease) infinite alternate}
+.orb.b{width:46vw;height:46vw;right:-16vw;top:12vh;background:#1f7bff;opacity:.5;animation:float2 26s var(--ease) infinite alternate}
+.orb.c{width:44vw;height:44vw;left:6vw;bottom:-18vh;background:#4a5cf0;opacity:.44;animation:float3 30s var(--ease) infinite alternate}
+.orb.d{width:34vw;height:34vw;right:-8vw;top:48vh;background:var(--accent);opacity:.5;filter:blur(70px);animation:float2 24s var(--ease) infinite alternate-reverse}
 @keyframes float1{to{transform:translate(6vw,5vh) scale(1.1)}}
 @keyframes float2{to{transform:translate(-5vw,7vh) scale(1.08)}}
 @keyframes float3{to{transform:translate(4vw,-6vh) scale(1.12)}}
@@ -100,15 +97,13 @@ button{font-family:inherit}
   padding-bottom:max(48px,env(safe-area-inset-bottom));}
 
 .topbar{display:flex;align-items:center;justify-content:space-between;padding:6px 2px 34px}
-.mono{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.02em}
-.mono .dot{width:30px;height:30px;border-radius:9px;background:var(--accent);
-  display:grid;place-items:center;font-family:"Unbounded";font-size:14px;color:#fff;font-weight:600}
+.mono{font-family:"Unbounded";font-weight:400;font-size:12.5px;letter-spacing:.32em;color:var(--text)}
 .status{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--muted);
   border:1px solid var(--line);padding:6px 11px;border-radius:999px;background:var(--glass);
   -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
-.status .live{width:7px;height:7px;border-radius:50%;background:var(--a3);
-  box-shadow:0 0 0 0 rgba(87,230,200,.55);animation:pulse 2.4s infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(87,230,200,.5)}70%{box-shadow:0 0 0 8px rgba(87,230,200,0)}100%{box-shadow:0 0 0 0 rgba(87,230,200,0)}}
+.status .live{width:7px;height:7px;border-radius:50%;background:var(--accent);
+  box-shadow:0 0 0 0 rgba(107,124,255,.55);animation:pulse 2.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(107,124,255,.5)}70%{box-shadow:0 0 0 8px rgba(107,124,255,0)}100%{box-shadow:0 0 0 0 rgba(107,124,255,0)}}
 
 /* ===================================================================
    HERO
@@ -154,13 +149,15 @@ button{font-family:inherit}
 .offer-top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:16px}
 .badge-hot{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
   color:var(--accent);background:var(--accent-weak);border:1px solid var(--accent-line);padding:5px 10px;border-radius:8px}
-.offer h3{font-family:"Unbounded";font-weight:400;font-size:22px;line-height:1.2;margin:0 0 6px}
+.offer h3{font-weight:700;font-size:20px;line-height:1.25;margin:0 0 6px}
 .offer p{color:var(--muted);font-size:14.5px;margin:0 0 18px}
 .price-row{display:flex;align-items:baseline;gap:10px;margin-bottom:18px}
 .price{font-family:"Unbounded";font-size:26px}
 .price-old{color:var(--muted-2);text-decoration:line-through;font-size:15px}
 .price-note{color:var(--muted);font-size:13px;margin-left:auto}
 .cta-note{text-align:center;color:var(--muted);font-size:13px;margin-top:12px}
+.proof{color:var(--muted);font-size:13px;border-left:2px solid var(--accent-line);
+  padding-left:11px;margin:0 0 18px}
 
 /* ===================================================================
    КНОПКИ
@@ -205,7 +202,7 @@ button{font-family:inherit}
 .biz-inner{position:relative;z-index:1}
 .biz .kicker{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
   color:var(--accent);margin-bottom:10px}
-.biz h3{font-family:"Unbounded";font-weight:400;font-size:23px;margin:0 0 8px;line-height:1.2}
+.biz h3{font-weight:700;font-size:21px;margin:0 0 8px;line-height:1.25}
 .biz p{color:var(--muted);font-size:14.5px;margin:0 0 20px}
 .biz .btn svg{transition:transform .3s var(--ease)}
 .biz:hover .btn svg{transform:translate(4px)}
@@ -240,7 +237,7 @@ button{font-family:inherit}
 <body>
 
 <div class="bg" aria-hidden="true">
-  <div class="orb a"></div><div class="orb b"></div><div class="orb c"></div>
+  <div class="orb a"></div><div class="orb b"></div><div class="orb c"></div><div class="orb d"></div>
 </div>
 <div class="grid-overlay" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
@@ -249,7 +246,7 @@ button{font-family:inherit}
 
   <!-- ── ВЕРХНЯЯ ПАНЕЛЬ ─────────────────────────────────────────── -->
   <div class="topbar reveal">
-    <div class="mono"><span class="dot" id="mono-letter">D</span><span id="mono-name">DELLIONER</span></div>
+    <div class="mono" id="mono-name">DELLIONER</div>
     <span class="status"><span class="live"></span>На связи</span>
   </div>
 
@@ -262,7 +259,7 @@ button{font-family:inherit}
     <p class="role reveal" id="hero-role">Travel-бизнес: доход и работа из любой точки мира. Помогаю выстроить <b>систему дохода с нуля</b>.</p>
     <div class="trust reveal">
       <span class="chip"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg><span id="chip-1">2 млн просмотров за 30 дней</span></span>
-      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span id="chip-2">Контент — каждый день</span></span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span id="chip-2">Лучший ролик — 1,6 млн просмотров</span></span>
     </div>
   </header>
 
@@ -294,6 +291,7 @@ button{font-family:inherit}
       </div>
       <h3 id="offer-title">7 причин, почему ты не начинаешь вести блог</h3>
       <p id="offer-desc">Дело не в том, что ты не знаешь, о чём снимать, — тебя держат 7 конкретных причин. В гайде разбор каждой и инструмент, как её убрать.</p>
+      <p class="proof" id="offer-proof">Мои цифры: первые ролики — 50–60 просмотров, сейчас — 3–5 тысяч, лучший — 1,6 млн.</p>
       <div class="price-row">
         <span class="price" id="offer-price">559 ₽ · 7 $</span>
         <span class="price-old" id="offer-price-old"></span>
@@ -341,7 +339,7 @@ button{font-family:inherit}
 
   <div class="foot reveal">
     <div id="foot-name">© 2026 Дмитрий Власов</div>
-    <div>Сделано с вниманием к деталям</div>
+    <div>@dellioner</div>
   </div>
 
 </main>
@@ -358,18 +356,18 @@ const CONFIG = {
 
   /* ── Имя / бренд ─────────────────────────────────── */
   name:     "Дмитрий Власов",    // отображаемое имя (заголовок и футер)
-  brand:    "DELLIONER",         // надпись в логотипе слева вверху
-  monogram: "D",                 // 1 буква в квадратике логотипа
+  brand:    "DELLIONER",         // ворднейк слева вверху
   photo:    "avatar.jpg",        // фото (лежит рядом с сайтом). Пусто "" = инициалы
   initials: "ДВ",                // инициалы, если фото нет
   role:     "Travel-бизнес: доход и работа из любой точки мира. Помогаю выстроить <b>систему дохода с нуля</b>.",
   chip1:    "2 млн просмотров за 30 дней",
-  chip2:    "Контент — каждый день",
+  chip2:    "Лучший ролик — 1,6 млн просмотров",
 
   /* ── PDF-гайд ────────────────────────────────────── */
   guide: {
     title:      "7 причин, почему ты не начинаешь вести блог",
     desc:       "Дело не в том, что ты не знаешь, о чём снимать, — тебя держат 7 конкретных причин. В гайде разбор каждой и инструмент, как её убрать.",
+    proof:      "Мои цифры: первые ролики — 50–60 просмотров, сейчас — 3–5 тысяч, лучший — 1,6 млн.",
     format:     "23 страницы",
     price:      "559 ₽ · 7 $",
     priceOld:   "",              // зачёркнутая старая цена; пусто "" = не показывать
@@ -416,7 +414,6 @@ const CONFIG = {
   };
 
   setText("mono-name",CONFIG.brand||CONFIG.name); setText("hero-name",CONFIG.name);
-  setText("mono-letter",CONFIG.monogram);
   setText("hero-role",CONFIG.role);
   setText("chip-1",CONFIG.chip1); setText("chip-2",CONFIG.chip2);
 
@@ -427,6 +424,7 @@ const CONFIG = {
 
   setText("offer-title",CONFIG.guide.title);
   setText("offer-desc",CONFIG.guide.desc);
+  setText("offer-proof",CONFIG.guide.proof);
   setText("offer-format",CONFIG.guide.format);
   setText("offer-price",CONFIG.guide.price);
   setText("offer-price-note",CONFIG.guide.priceNote);
