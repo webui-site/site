@@ -19,7 +19,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Unbounded:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 /* ===================================================================
@@ -97,7 +97,7 @@ button{font-family:inherit}
   padding-bottom:max(48px,env(safe-area-inset-bottom));}
 
 .topbar{display:flex;align-items:center;justify-content:space-between;padding:6px 2px 34px}
-.mono{font-family:"Unbounded";font-weight:400;font-size:12.5px;letter-spacing:.32em;color:var(--text)}
+.mono{font-weight:600;font-size:12.5px;letter-spacing:.32em;color:var(--text)}
 .status{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--muted);
   border:1px solid var(--line);padding:6px 11px;border-radius:999px;background:var(--glass);
   -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
@@ -115,10 +115,10 @@ button{font-family:inherit}
 .avatar-ring::after{content:"";position:absolute;inset:-9px;border-radius:50%;border:1px solid var(--line)}
 .avatar{width:100%;height:100%;border-radius:50%;object-fit:cover;
   background:linear-gradient(160deg,#1a1b26,#101018);display:grid;place-items:center;
-  font-family:"Unbounded";font-weight:500;font-size:34px;color:#cdd0ff;letter-spacing:.04em}
+  font-weight:700;font-size:34px;color:#cdd0ff;letter-spacing:.04em}
 
-.name{font-family:"Unbounded";font-weight:400;font-size:clamp(30px,8.5vw,42px);
-  line-height:1.05;margin:0 0 12px;letter-spacing:.01em}
+.name{font-weight:800;font-size:clamp(27px,7vw,36px);
+  line-height:1.1;margin:0 0 12px;letter-spacing:-.01em}
 .role{color:var(--muted);font-size:15.5px;max-width:400px;margin:0 auto 20px;font-weight:400}
 .role b{color:var(--text);font-weight:600}
 
@@ -152,7 +152,7 @@ button{font-family:inherit}
 .offer h3{font-weight:700;font-size:20px;line-height:1.25;margin:0 0 6px}
 .offer p{color:var(--muted);font-size:14.5px;margin:0 0 18px}
 .price-row{display:flex;align-items:baseline;gap:8px 10px;margin-bottom:18px;flex-wrap:wrap}
-.price{font-family:"Unbounded";font-size:26px;white-space:nowrap}
+.price{font-weight:800;font-size:24px;white-space:nowrap}
 .price-old{color:var(--muted-2);text-decoration:line-through;font-size:15px}
 .price-note{color:var(--muted);font-size:13px;margin-left:auto}
 .cta-note{text-align:center;color:var(--muted);font-size:13px;margin-top:12px}
@@ -256,10 +256,10 @@ button{font-family:inherit}
       <div class="avatar" id="avatar">ДВ</div>
     </div>
     <h1 class="name reveal" id="hero-name">Дмитрий Власов</h1>
-    <p class="role reveal" id="hero-role">Travel-бизнес: доход и работа из любой точки мира. Помогаю выстроить <b>систему дохода с нуля</b>.</p>
+    <p class="role reveal" id="hero-role">Доход и работа из любой точки мира. Помогаю выстроить <b>систему дохода с нуля</b>.</p>
     <div class="trust reveal">
-      <span class="chip"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg><span id="chip-1">2 млн просмотров за 30 дней</span></span>
-      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span id="chip-2">Лучший ролик — 1,6 млн просмотров</span></span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9S14.5 18.4 12 21c-2.5-2.6-3.8-5.7-3.8-9S9.5 5.6 12 3z"/></svg><span id="chip-1">За год удалённо поработал из 4 стран</span></span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span id="chip-2">Живу за границей и путешествую</span></span>
     </div>
   </header>
 
@@ -271,7 +271,7 @@ button{font-family:inherit}
       <div class="biz-inner">
         <div class="kicker" id="biz-kicker">Travel-бизнес</div>
         <h3 id="biz-title">Узнай, как устроен мой бизнес</h3>
-        <p id="biz-desc">Модель дохода, с которой я работаю из любой точки мира. Показываю путь и цифры изнутри — начни с бесплатного разбора в Telegram-канале.</p>
+        <p id="biz-desc">Покажу изнутри: сколько приносит, сколько времени занимает и с чего начать. Бесплатно и без обязательств — начни с разбора в Telegram-канале.</p>
         <span class="btn btn-primary">
           <span id="biz-cta">Забрать бесплатный разбор</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14m-6-6l6 6-6 6"/></svg>
@@ -291,7 +291,7 @@ button{font-family:inherit}
       </div>
       <h3 id="offer-title">7 причин, почему ты не начинаешь вести блог</h3>
       <p id="offer-desc">Дело не в том, что ты не знаешь, о чём снимать, — тебя держат 7 конкретных причин. В гайде разбор каждой и инструмент, как её убрать.</p>
-      <p class="proof" id="offer-proof">Мои цифры: первые ролики — 50–60 просмотров, сейчас — 3–5 тысяч, лучший — 1,6 млн.</p>
+      <p class="proof" id="offer-proof">Мои цифры: первые ролики — 50–60 просмотров, сейчас — 3–5 тысяч, лучший — 1,6 млн, +1000 подписчиков с одного ролика.</p>
       <div class="price-row">
         <span class="price" id="offer-price">559 ₽ · 7 $</span>
         <span class="price-old" id="offer-price-old"></span>
@@ -359,15 +359,15 @@ const CONFIG = {
   brand:    "DELLIONER",         // ворднейк слева вверху
   photo:    "avatar.jpg",        // фото (лежит рядом с сайтом). Пусто "" = инициалы
   initials: "ДВ",                // инициалы, если фото нет
-  role:     "Travel-бизнес: доход и работа из любой точки мира. Помогаю выстроить <b>систему дохода с нуля</b>.",
-  chip1:    "2 млн просмотров за 30 дней",
-  chip2:    "Лучший ролик — 1,6 млн просмотров",
+  role:     "Доход и работа из любой точки мира. Помогаю выстроить <b>систему дохода с нуля</b>.",
+  chip1:    "За год удалённо поработал из 4 стран",
+  chip2:    "Живу за границей и путешествую",
 
   /* ── PDF-гайд ────────────────────────────────────── */
   guide: {
     title:      "7 причин, почему ты не начинаешь вести блог",
     desc:       "Дело не в том, что ты не знаешь, о чём снимать, — тебя держат 7 конкретных причин. В гайде разбор каждой и инструмент, как её убрать.",
-    proof:      "Мои цифры: первые ролики — 50–60 просмотров, сейчас — 3–5 тысяч, лучший — 1,6 млн.",
+    proof:      "Мои цифры: первые ролики — 50–60 просмотров, сейчас — 3–5 тысяч, лучший — 1,6 млн, +1000 подписчиков с одного ролика.",
     format:     "23 страницы",
     price:      "559 ₽ · 7 $",
     priceOld:   "",              // зачёркнутая старая цена; пусто "" = не показывать
@@ -391,7 +391,7 @@ const CONFIG = {
   biz: {
     kicker: "Travel-бизнес",
     title:  "Узнай, как устроен мой бизнес",
-    desc:   "Модель дохода, с которой я работаю из любой точки мира. Показываю путь и цифры изнутри — начни с бесплатного разбора в Telegram-канале.",
+    desc:   "Покажу изнутри: сколько приносит, сколько времени занимает и с чего начать. Бесплатно и без обязательств — начни с разбора в Telegram-канале.",
     cta:    "Забрать бесплатный разбор"
     /* Для воронки поменяй desc/cta, например:
        desc: "Короткое видео о том, чем я занимаюсь и как присоединиться.",
