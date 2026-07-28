@@ -206,10 +206,9 @@ button{font-family:inherit}
 .biz .kicker{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
   color:var(--accent);margin-bottom:10px}
 .biz h3{font-family:"Unbounded";font-weight:400;font-size:23px;margin:0 0 8px;line-height:1.2}
-.biz p{color:var(--muted);font-size:14.5px;margin:0 0 18px}
-.biz .go{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:15px}
-.biz .go svg{width:18px;height:18px;transition:transform .3s var(--ease)}
-.biz:hover .go svg{transform:translate(4px)}
+.biz p{color:var(--muted);font-size:14.5px;margin:0 0 20px}
+.biz .btn svg{transition:transform .3s var(--ease)}
+.biz:hover .btn svg{transform:translate(4px)}
 
 /* соцсети-футер */
 .socials{display:flex;justify-content:center;gap:12px;margin-top:34px}
@@ -267,7 +266,24 @@ button{font-family:inherit}
     </div>
   </header>
 
-  <!-- ── ФЛАГМАН: PDF-ГАЙД ──────────────────────────────────────── -->
+  <!-- ── ГЛАВНОЕ: МОЙ БИЗНЕС ────────────────────────────────────── -->
+  <section class="section reveal">
+    <div class="eyebrow">Главное</div>
+    <a class="biz" id="cta-biz" href="business.html">
+      <div class="aura" aria-hidden="true"></div>
+      <div class="biz-inner">
+        <div class="kicker" id="biz-kicker">Travel-бизнес</div>
+        <h3 id="biz-title">Узнай, как устроен мой бизнес</h3>
+        <p id="biz-desc">Модель дохода, с которой я работаю из любой точки мира. Показываю путь и цифры изнутри — начни с бесплатного разбора в Telegram-канале.</p>
+        <span class="btn btn-primary">
+          <span id="biz-cta">Забрать бесплатный разбор</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14m-6-6l6 6-6 6"/></svg>
+        </span>
+      </div>
+    </a>
+  </section>
+
+  <!-- ── PDF-ГАЙД ───────────────────────────────────────────────── -->
   <section class="section reveal">
     <div class="eyebrow">Материал</div>
     <div class="card offer">
@@ -309,22 +325,6 @@ button{font-family:inherit}
       </a>
 
     </div>
-  </section>
-
-  <!-- ── БИЗНЕС ─────────────────────────────────────────────────── -->
-  <section class="section reveal">
-    <div class="eyebrow">Возможность</div>
-    <a class="biz" id="cta-biz" href="business.html">
-      <div class="aura" aria-hidden="true"></div>
-      <div class="biz-inner">
-        <div class="kicker" id="biz-kicker">Для тех, кто хочет большего</div>
-        <h3 id="biz-title">Узнать о моём бизнесе</h3>
-        <p id="biz-desc">Путь, цифры и система дохода — всё показываю в Telegram-канале. Зайди и посмотри изнутри.</p>
-        <span class="go"><span id="biz-cta">Перейти в канал</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14m-6-6l6 6-6 6"/></svg>
-        </span>
-      </div>
-    </a>
   </section>
 
   <!-- ── СОЦСЕТИ ────────────────────────────────────────────────── -->
@@ -383,17 +383,18 @@ const CONFIG = {
 
   /* ── Ссылки ──────────────────────────────────────── */
   telegramChannel: "https://t.me/+G78ibOSMqtY3YmVi",  // Telegram-канал
-  youtube:         "https://",                        // 👉 YouTube-канал (пришли ссылку)
+  youtube:         "https://youtube.com/@dellioner",  // YouTube-канал
 
-  /* Блок «Мой бизнес». Пока ведёт на Telegram-канал.
-     Когда будут готовы видео — поставь "business.html", и включится
-     воронка: видео 1 → видео 2 → личные сообщения. */
+  /* Блок «Мой бизнес» (главный, сразу под шапкой).
+     Пока ведёт на Telegram-канал. Когда будут готовы видео —
+     поставь "business.html", и включится воронка:
+     видео 1 → видео 2 → личные сообщения. */
   businessLink: "https://t.me/+G78ibOSMqtY3YmVi",
   biz: {
-    kicker: "Для тех, кто хочет большего",
-    title:  "Узнать о моём бизнесе",
-    desc:   "Путь, цифры и система дохода — всё показываю в Telegram-канале. Зайди и посмотри изнутри.",
-    cta:    "Перейти в канал"
+    kicker: "Travel-бизнес",
+    title:  "Узнай, как устроен мой бизнес",
+    desc:   "Модель дохода, с которой я работаю из любой точки мира. Показываю путь и цифры изнутри — начни с бесплатного разбора в Telegram-канале.",
+    cta:    "Забрать бесплатный разбор"
     /* Для воронки поменяй desc/cta, например:
        desc: "Короткое видео о том, чем я занимаюсь и как присоединиться.",
        cta:  "Смотреть видео" */
